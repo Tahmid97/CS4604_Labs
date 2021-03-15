@@ -165,7 +165,16 @@ Now let's drop the indexes and try again:
 Record output below:
 
 ```
+sqlite> drop index idx1_big_cards;
+Run Time: real 0.118 user 0.000000 sys 0.093750
 
+sqlite> drop index idx2_big_cards;
+Run Time: real 0.313 user 0.093750 sys 0.187500
+
+sqlite> EXPLAIN QUERY PLAN update big_cards set race = 'BAR';
+QUERY PLAN
+`--SCAN TABLE big_cards
+Run Time: real 0.001 user 0.000000 sys 0.000000
 ```
 
 Does the update took less time without the indexes? 
