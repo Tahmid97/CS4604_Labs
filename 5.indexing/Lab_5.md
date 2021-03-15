@@ -108,7 +108,13 @@ Would it be possible to satisfy the query with an index only and further speed u
 Record output below:
 
 ```
+sqlite> CREATE INDEX IDX2_big_cards ON big_cards(race, card_id, name);
+Run Time: real 7.336 user 5.203125 sys 1.687500
 
+sqlite> EXPLAIN QUERY PLAN SELECT card_id, name FROM big_cards WHERE race = 'TOTEM';
+QUERY PLAN
+`--SEARCH TABLE big_cards USING COVERING INDEX IDX2_big_cards (race=?)
+Run Time: real 0.001 user 0.000000 sys 0.000000
 ```
 
 If you issue command `VACUUM big_cards;` and re-analyze you will likely see an explain plan that *is* satisfied by the index (and consequently much faster). However, subsequent updates to the table would cause this query to go back to the table to check the visibility map.
