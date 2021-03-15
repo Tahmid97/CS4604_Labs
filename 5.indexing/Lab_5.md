@@ -76,7 +76,9 @@ You suspect an index will help, but before you make any changes you want to get 
 Record output below:
 
 ```
-
+QUERY PLAN
+`--SCAN TABLE big_cards
+Run Time: real 0.002 user 0.000000 sys 0.000000
 ```
 
 You suspect that an index on the race column will help. Let's create it.
