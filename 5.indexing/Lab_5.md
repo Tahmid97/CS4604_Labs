@@ -126,7 +126,13 @@ If you issue command `VACUUM big_cards;` and re-analyze you will likely see an e
 Record output below:
 
 ```
+sqlite> VACUUM;
+Run Time: real 21.266 user 5.640625 sys 12.500000
 
+sqlite> EXPLAIN QUERY PLAN SELECT card_id, name FROM big_cards WHERE race = 'TOTEM';
+QUERY PLAN
+`--SEARCH TABLE big_cards USING COVERING INDEX IDX2_big_cards (race=?)
+Run Time: real 0.001 user 0.000000 sys 0.000000
 ```
 
 #### The performance cost of Indexes 
