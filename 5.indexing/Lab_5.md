@@ -180,16 +180,16 @@ Run Time: real 0.001 user 0.000000 sys 0.000000
 Does the update took less time without the indexes? 
 Your answer:
 ```
-
+No, the values that I got didn't show any significant changes in update time with or without the index.
 ```
 
 Describe your findings of this Lab 5 from the recorded outputs, is everything working fine? or is anything not working? etc. Please indicate your SQLite version:
 
 ```
-SQLite version: 
+SQLite version: 3.34.1
 Findings:
-
-
+Indexing speeds up lookup time, but it slows down update time.
+The values that I got showed the improvement of performance after indexing.  However, the times remained unchanged (0.001) after executing VACUUM, updating with indexing and updating without indexing. Therefore, it is hard to say whether this is working correctly with the values that I found. 
 ```
 
 ps. Use this command to check your SQLite version. `sqlite3 --version`
